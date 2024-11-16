@@ -1043,7 +1043,8 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
         elif m is ResNetLayer:
             c2 = args[1] if args[3] else args[1] * 4
         elif m is nn.BatchNorm2d:
-            args = [ch[f]]
+            # args = [ch[f]] # 取消通道限制
+            pass
         elif m is Concat:
             c2 = sum(ch[x] for x in f)
         elif m in {Detect, WorldDetect, Segment, Pose, OBB, ImagePoolingAttn, v10Detect}:
